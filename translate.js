@@ -38,8 +38,8 @@ function translateZeroBC(arr, t) {
   }
   q = q.hi.apply(q, v)
   p = p.lo.apply(p, u)
-  var y_t = pool.malloc(ndarray.size(q), ndarray.dtype(arr))
-    , y = ndarray.ctor(y_t, q.shape, ndarray.stride(q.shape, ndarray.order(q)), 0)
+  var y_t = pool.malloc(q.size, arr.dtype)
+  var y = ndarray(y_t, q.shape, q.stride, 0)
   ops.assign(y, q)
   ops.assigns(arr, 0)
   ops.assign(p, y)
